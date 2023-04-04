@@ -1,8 +1,10 @@
-go
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
 )
 
 // Caesar cipher function
@@ -41,13 +43,39 @@ func caesarCipher(str string, shift int) string {
 }
 
 func main() {
-	// Input string and shift
-	str := "Hello, World!"
-	shift := 3
+	fmt.Println("Ingrese un texto: ")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	str := scanner.Text()
+
+	fmt.Println("Ingrese un la cantidad de posiciones: ")
+	scanner.Scan()
+	inputStr := scanner.Text()
+
+	shift, err := strconv.Atoi(inputStr)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println("¿Izquierda o derecha?: ")
+	scanner.Scan()
+	lr := scanner.Text()
+
+	//Comparar si lr es l o r en un if
+	if lr == "i" {
+		shift = -shift
+	}
 
 	// Encrypt the input string
 	encryptedStr := caesarCipher(str, shift)
 
+	// Print the String
+	fmt.Println("str: " + str)
+
 	// Print the encrypted string
-	fmt.Println(encryptedStr)
+	fmt.Println("encryptedStr: " + encryptedStr)
+
+	decryptStr := caesarCipher(encryptedStr, -shift)
+	fmt.Println("decryptStr " + decryptStr)
 }
