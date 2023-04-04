@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // Caesar cipher function
@@ -42,28 +43,54 @@ func caesarCipher(str string, shift int) string {
 	return string(result)
 }
 
-func main() {
-	fmt.Println("Ingrese un texto: ")
+func leerCadena() string {
+	var input string
+	fmt.Println("Ingresa una cadena de texto:")
+	fmt.Scanln(&input)
+	return input
+}
+
+func leerNumero() int {
 	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	str := scanner.Text()
-
-	fmt.Println("Ingrese un la cantidad de posiciones: ")
-	scanner.Scan()
-	inputStr := scanner.Text()
-
-	shift, err := strconv.Atoi(inputStr)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
+	fmt.Print("Introduce un número entre 2 y 26: ")
+	for scanner.Scan() {
+		input := scanner.Text()
+		numero, err := strconv.Atoi(input)
+		if err != nil || numero < 2 || numero > 26 {
+			fmt.Print("Número inválido. Introduce un número entre 2 y 26: ")
+		} else {
+			return numero
+		}
 	}
+	return 0
+}
 
-	fmt.Println("¿Izquierda o derecha?: ")
-	scanner.Scan()
-	lr := scanner.Text()
+func leerIzquierdaODerecha() string {
+	var letra string
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Print("Introduce una letra (l o r): ")
+	for scanner.Scan() {
+		input := scanner.Text()
+		letra = strings.ToLower(strings.TrimSpace(input))
+		if letra != "l" && letra != "r" {
+			fmt.Print("Letra inválida. Introduce una letra (l o r): ")
+		} else {
+			break
+		}
+	}
+	return letra
+}
 
+// Función que pida una letra entre l o r por consola
+
+func main() {
+	str := leerCadena()
+
+	shift := leerNumero()
+
+	lr := leerIzquierdaODerecha()
 	//Comparar si lr es l o r en un if
-	if lr == "i" {
+	if lr == "l" {
 		shift = -shift
 	}
 
