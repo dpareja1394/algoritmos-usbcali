@@ -24,19 +24,7 @@ func encrypt(text string, shift int) string {
 }
 
 func decrypt(cipherText string, shift int) string {
-	var plainText strings.Builder
-	shift = -shift
-
-	for _, char := range cipherText {
-		if char >= 'a' && char <= 'z' {
-			char = 'a' + ((char-'a'+rune(shift))%26+26)%26
-		} else if char >= 'A' && char <= 'Z' {
-			char = 'A' + ((char-'A'+rune(shift))%26+26)%26
-		}
-		plainText.WriteRune(char)
-	}
-
-	return plainText.String()
+	return encrypt(cipherText, -shift)
 }
 
 func leerCadena() string {
