@@ -8,39 +8,35 @@ import (
 	"strings"
 )
 
-// Caesar cipher function
-func caesarCipher(str string, shift int) string {
-	// Transform shift into a value between 0 and 25
-	shift = shift % 26
+func encrypt(text string, shift int) string {
+	var cipher strings.Builder
 
-	// Create an array to store the result
-	result := make([]byte, len(str))
-
-	// Loop through the input string
-	for i := 0; i < len(str); i++ {
-		char := str[i]
-
-		// Shift uppercase characters
-		if char >= 'A' && char <= 'Z' {
-			char = char + byte(shift)
-			if char > 'Z' {
-				char = char - 26
-			}
-		}
-
-		// Shift lowercase characters
+	for _, char := range text {
 		if char >= 'a' && char <= 'z' {
-			char = char + byte(shift)
-			if char > 'z' {
-				char = char - 26
-			}
+			char = 'a' + ((char-'a'+rune(shift))%26+26)%26
+		} else if char >= 'A' && char <= 'Z' {
+			char = 'A' + ((char-'A'+rune(shift))%26+26)%26
 		}
-
-		result[i] = char
+		cipher.WriteRune(char)
 	}
 
-	// Return the result as a string
-	return string(result)
+	return cipher.String()
+}
+
+func decrypt(cipherText string, shift int) string {
+	var plainText strings.Builder
+	shift = -shift
+
+	for _, char := range cipherText {
+		if char >= 'a' && char <= 'z' {
+			char = 'a' + ((char-'a'+rune(shift))%26+26)%26
+		} else if char >= 'A' && char <= 'Z' {
+			char = 'A' + ((char-'A'+rune(shift))%26+26)%26
+		}
+		plainText.WriteRune(char)
+	}
+
+	return plainText.String()
 }
 
 func leerCadena() string {
@@ -52,12 +48,12 @@ func leerCadena() string {
 
 func leerNumero() int {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Print("Introduce un número entre 2 y 26: ")
+	fmt.Print("Introduce un número entre 1 y 25: ")
 	for scanner.Scan() {
 		input := scanner.Text()
 		numero, err := strconv.Atoi(input)
-		if err != nil || numero < 2 || numero > 26 {
-			fmt.Print("Número inválido. Introduce un número entre 2 y 26: ")
+		if err != nil || numero < 1 || numero > 25 {
+			fmt.Print("Número inválido. Introduce un número entre 1 y 25: ")
 		} else {
 			return numero
 		}
@@ -65,44 +61,37 @@ func leerNumero() int {
 	return 0
 }
 
-func leerIzquierdaODerecha() string {
-	var letra string
+func leerDireccion() string {
+	var direccion string
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Print("Introduce una letra (l o r): ")
+	fmt.Print("Introduce una dirección izquierda o derecha: ")
 	for scanner.Scan() {
 		input := scanner.Text()
-		letra = strings.ToLower(strings.TrimSpace(input))
-		if letra != "l" && letra != "r" {
-			fmt.Print("Letra inválida. Introduce una letra (l o r): ")
+		direccion = strings.ToLower(strings.TrimSpace(input))
+		if direccion != "izquierda" && direccion != "derecha" {
+			fmt.Print("Dirección incorrecta. Introduce una dirección (izquierda o derecha): ")
 		} else {
 			break
 		}
 	}
-	return letra
+	return direccion
 }
 
-// Función que pida una letra entre l o r por consola
-
 func main() {
+
 	str := leerCadena()
 
 	shift := leerNumero()
 
-	lr := leerIzquierdaODerecha()
-	//Comparar si lr es l o r en un if
-	if lr == "l" {
-		shift = -shift
+	direccion := leerDireccion()
+
+	if direccion == "izquierda" {
+		shift = shift * -1 // Shift 3 positions to the left
 	}
 
-	// Encrypt the input string
-	encryptedStr := caesarCipher(str, shift)
+	cipherText := encrypt(str, shift)
+	fmt.Println("Cipher text: ", cipherText)
 
-	// Print the String
-	fmt.Println("str: " + str)
-
-	// Print the encrypted string
-	fmt.Println("encryptedStr: " + encryptedStr)
-
-	decryptStr := caesarCipher(encryptedStr, -shift)
-	fmt.Println("decryptStr " + decryptStr)
+	plainText := decrypt(cipherText, shift)
+	fmt.Println("Plain text: ", plainText)
 }
