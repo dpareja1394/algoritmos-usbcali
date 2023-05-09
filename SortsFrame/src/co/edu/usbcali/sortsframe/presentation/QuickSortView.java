@@ -4,25 +4,25 @@
  */
 package co.edu.usbcali.sortsframe.presentation;
 
-import co.edu.usbcali.sortsframe.controller.MergeSortControllerInterface;
-import co.edu.usbcali.sortsframe.controller.implementation.MergeSortControllerImplementation;
+import co.edu.usbcali.sortsframe.controller.QuickSortControllerInterface;
+import co.edu.usbcali.sortsframe.controller.implementation.QuickSortControllerImplementation;
 import co.edu.usbcali.sortsframe.util.Utility;
 
 /**
  *
  * @author dpareja
  */
-public class MergeSortView extends javax.swing.JFrame {
+public class QuickSortView extends javax.swing.JFrame {
 
     /**
      * Creates new form MergeSortView
      */
     
-    private final MergeSortControllerInterface mergeSortController;
-    public MergeSortView() {
+    private final QuickSortControllerInterface quickSortController;
+    public QuickSortView() {
         initComponents();
         setLocationRelativeTo(null);
-        this.mergeSortController = new MergeSortControllerImplementation();
+        this.quickSortController = new QuickSortControllerImplementation();
     }
     
     
@@ -57,7 +57,7 @@ public class MergeSortView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("MergeSort");
+        jLabel1.setText("QuickSort");
 
         jLabel2.setText("Ingrese los números a ordenar");
 
@@ -81,25 +81,25 @@ public class MergeSortView extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(btnAtras))
-                                .addGap(340, 340, 340)
-                                .addComponent(jLabel1)))))
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAtras)
+                        .addGap(437, 437, 437)
+                        .addComponent(jLabel1)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnAtras))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnOrdenar)
                 .addGap(12, 12, 12))
@@ -115,7 +115,7 @@ public class MergeSortView extends javax.swing.JFrame {
                 throw new Exception("Debe ingresar los números separados por comas en la caja de texto");
             }
                 
-            int[] array = mergeSortController.mergeSortArray(txtNumeros.getText());
+            int[] array = quickSortController.quickSortArray(txtNumeros.getText());
             
             txtNumeros.setText(Utility.arrayIntToString(array));
         } catch (Exception e) {

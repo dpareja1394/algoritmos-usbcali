@@ -31,7 +31,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="btnMergeSort" min="-2" pref="241" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnQuickSort" min="-2" pref="241" max="-2" attributes="0"/>
+                          <Component id="btnMergeSort" min="-2" pref="241" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="85" max="32767" attributes="0"/>
@@ -45,7 +48,9 @@
               <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnMergeSort" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="221" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnQuickSort" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,7 +58,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnMergeSort">
       <Properties>
-        <Property name="text" type="java.lang.String" value="MergeSort (Combinaci&#xf3;n)"/>
+        <Property name="text" type="java.lang.String" value="MergeSort"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMergeSortActionPerformed"/>
@@ -63,6 +68,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ordenamientos"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnQuickSort">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="QuickSort"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuickSortActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

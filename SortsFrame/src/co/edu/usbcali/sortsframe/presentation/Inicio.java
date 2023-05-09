@@ -26,10 +26,11 @@ public class Inicio extends javax.swing.JFrame {
 
         btnMergeSort = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
+        btnQuickSort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnMergeSort.setText("MergeSort (Combinación)");
+        btnMergeSort.setText("MergeSort");
         btnMergeSort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMergeSortActionPerformed(evt);
@@ -37,6 +38,13 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         lblTitulo.setText("Ordenamientos");
+
+        btnQuickSort.setText("QuickSort");
+        btnQuickSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuickSortActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,7 +57,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(lblTitulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addComponent(btnMergeSort, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnQuickSort, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMergeSort, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -59,7 +69,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMergeSort)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnQuickSort)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,6 +81,11 @@ public class Inicio extends javax.swing.JFrame {
         new MergeSortView().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMergeSortActionPerformed
+
+    private void btnQuickSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuickSortActionPerformed
+        new QuickSortView().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQuickSortActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,6 +125,7 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMergeSort;
+    private javax.swing.JButton btnQuickSort;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
