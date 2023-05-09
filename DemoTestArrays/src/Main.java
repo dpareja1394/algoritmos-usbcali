@@ -20,9 +20,9 @@ public class Main {
         {"GET_NEXT", "4"}
         };
 
-        String[] buscarSolucion = solution(queries);
+        String[] findSolution = solution(queries);
 
-        System.out.println(String.join(", ", buscarSolucion));
+        System.out.println(String.join(", ", findSolution));
     }
 
     static String[] solution(String[][] queries) {
