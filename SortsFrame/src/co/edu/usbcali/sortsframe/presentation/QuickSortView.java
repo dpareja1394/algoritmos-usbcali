@@ -4,7 +4,7 @@
  */
 package co.edu.usbcali.sortsframe.presentation;
 
-import co.edu.usbcali.sortsframe.controller.QuickSortControllerInterface;
+import co.edu.usbcali.sortsframe.controller.SortControllerInterface;
 import co.edu.usbcali.sortsframe.controller.implementation.QuickSortControllerImplementation;
 import co.edu.usbcali.sortsframe.util.Utility;
 
@@ -18,11 +18,11 @@ public class QuickSortView extends javax.swing.JFrame {
      * Creates new form MergeSortView
      */
     
-    private final QuickSortControllerInterface quickSortController;
+    private final SortControllerInterface sortController;
     public QuickSortView() {
         initComponents();
         setLocationRelativeTo(null);
-        this.quickSortController = new QuickSortControllerImplementation();
+        this.sortController = new QuickSortControllerImplementation();
     }
     
     
@@ -115,7 +115,7 @@ public class QuickSortView extends javax.swing.JFrame {
                 throw new Exception("Debe ingresar los números separados por comas en la caja de texto");
             }
                 
-            int[] array = quickSortController.quickSortArray(txtNumeros.getText());
+            int[] array = sortController.sortArray(txtNumeros.getText());
             
             txtNumeros.setText(Utility.arrayIntToString(array));
         } catch (Exception e) {

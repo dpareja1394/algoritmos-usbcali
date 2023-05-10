@@ -4,7 +4,7 @@
  */
 package co.edu.usbcali.sortsframe.presentation;
 
-import co.edu.usbcali.sortsframe.controller.MergeSortControllerInterface;
+import co.edu.usbcali.sortsframe.controller.SortControllerInterface;
 import co.edu.usbcali.sortsframe.controller.implementation.MergeSortControllerImplementation;
 import co.edu.usbcali.sortsframe.util.Utility;
 
@@ -18,11 +18,11 @@ public class MergeSortView extends javax.swing.JFrame {
      * Creates new form MergeSortView
      */
     
-    private final MergeSortControllerInterface mergeSortController;
+    private final SortControllerInterface sortController;
     public MergeSortView() {
         initComponents();
         setLocationRelativeTo(null);
-        this.mergeSortController = new MergeSortControllerImplementation();
+        this.sortController = new MergeSortControllerImplementation();
     }
     
     
@@ -115,7 +115,7 @@ public class MergeSortView extends javax.swing.JFrame {
                 throw new Exception("Debe ingresar los números separados por comas en la caja de texto");
             }
                 
-            int[] array = mergeSortController.mergeSortArray(txtNumeros.getText());
+            int[] array = sortController.sortArray(txtNumeros.getText());
             
             txtNumeros.setText(Utility.arrayIntToString(array));
         } catch (Exception e) {

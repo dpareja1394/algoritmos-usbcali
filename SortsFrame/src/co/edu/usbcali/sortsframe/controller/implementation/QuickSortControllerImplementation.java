@@ -4,7 +4,7 @@
  */
 package co.edu.usbcali.sortsframe.controller.implementation;
 
-import co.edu.usbcali.sortsframe.controller.QuickSortControllerInterface;
+import co.edu.usbcali.sortsframe.controller.SortControllerInterface;
 import co.edu.usbcali.sortsframe.util.Utility;
 import java.util.Date;
 
@@ -12,10 +12,10 @@ import java.util.Date;
  *
  * @author dpareja
  */
-public class QuickSortControllerImplementation implements QuickSortControllerInterface{
+public class QuickSortControllerImplementation implements SortControllerInterface{
 
     @Override
-    public int[] quickSortArray(String text) {
+    public int[] sortArray(String text) {
         
         int[] array = Utility.stringToInt(text);
         Utility.printArray(array);

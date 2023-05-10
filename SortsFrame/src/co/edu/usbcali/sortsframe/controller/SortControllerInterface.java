@@ -8,6 +8,6 @@ package co.edu.usbcali.sortsframe.controller;
  *
  * @author dpareja
  */
-public interface MergeSortControllerInterface {
-    int[] mergeSortArray(String text);
+public interface SortControllerInterface {
+    int[] sortArray(String text);
 }
