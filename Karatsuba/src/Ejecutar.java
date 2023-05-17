@@ -4,16 +4,17 @@ import java.util.List;
 public class Ejecutar {
 
     public static void main(String[] args) {
-        Long n1 = 678888828L;
-                //12345L;
+        Long n1 = 12345L;
 
-        Long n2 = 8920100000L;
-                //67891L;
+        Long n2 = -67891L;
 
-        List<Long> separacionN1 = separarNumeros(n1);
-        List<Long> separacionN2 = separarNumeros(n2);
+        //List<Long> separacionN1 = separarNumeros(n1);
+        //List<Long> separacionN2 = separarNumeros(n2);
 
-        Long resultado = aplicarMultiplicacion(separacionN1, separacionN2);
+        Long[] separacionN1 = Karatsuba.separarNumeros(n1);
+        Long[] separacionN2 = Karatsuba.separarNumeros(n2);
+
+        Long resultado = Karatsuba.aplicarMultiplicacion(separacionN1, separacionN2);
 
         System.out.println("Resultado "+resultado);
 
